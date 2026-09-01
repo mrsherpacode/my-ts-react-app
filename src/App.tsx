@@ -1,12 +1,24 @@
 import "./index.css";
 
+import Header from "./components/Header";
+import Cart from "./components/Cart";
+import Footer from "./components/Footer";
+import Productlist from "./components/Productlist";
+import { useState } from "react";
+
 function App() {
-  return (
+  const [viewCart, setViewCart] = useState(false);
+
+  const pageContent = viewCart ? Cart : Productlist;
+  const content = (
     <>
-      <div className="app"></div>
-      <h2>hello</h2>
+      <Header viewCart={viewCart} setViewCart={setViewCart} />
+      {pageContent}
+      <Footer viewCart={viewCart} />
     </>
   );
+
+  return content;
 }
 
 export default App;
